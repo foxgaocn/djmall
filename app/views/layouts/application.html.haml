@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %title=#{@store.name}的代购铺
+    = stylesheet_link_tag 'application', media: :all
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+    %meta{'http-equiv' => 'X-UA-Compatible', content: 'IE=edge'}
+    %meta{'name' => "viewport", content: "width=device-width, initial-scale=1"}
+  %body
+    %nav.navbar.navbar-inverse.navbar-fixed-top{role:'navigation'}
+      .container
+        .navbar-header
+          %a.navbar-brand{href:"/#{@store.name}"} #{@store.name}的代购铺
+          %button.navbar-toggle{type:"button","data-toggle"=>"collapse", "data-target"=>"#navbar-main"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          
+        %div.collapse.navbar-collapse{id:'navbar-main'}
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{href:"#"}关于我们
+            %li
+              =link_to "我们的商品", "fdsa"
+            %li
+              %a{href:"#"}联系我们store
+
+    %p.notice #{notice}
+    %p.alert  #{alert}
+
+    = content_for?(:content) ? yield(:content) : yield
+  .container
+    %hr
+    %footer
+      .row
+        .col-lg-12
+          %p Copyright &copy; daigou 2014
