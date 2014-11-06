@@ -36,10 +36,10 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 
 namespace :deploy do
 
-  desc "Symlinks the database.yml"
-  task :symlink_db, :roles => :app do
-    run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
-  end
+  #desc "Symlinks the database.yml"
+  #task :symlink_db, :roles => :app do
+  #  run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
+  #end
 
   desc 'Restart application'
   task :restart do
@@ -51,7 +51,7 @@ namespace :deploy do
 
   after :publishing, :restart
 
-  after :update_code, :symlink_db
+  #after :update_code, :symlink_db
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
