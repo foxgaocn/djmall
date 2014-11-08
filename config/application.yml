@@ -1,0 +1,8 @@
+defaults: &defaults
+  daigou_url: http://localhost:3000
+
+development:
+  <<: *defaults
+
+production:
+  daigou_url: http://104.236.28.222

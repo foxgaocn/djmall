@@ -12,7 +12,6 @@ require "sprockets/railtie"
 Bundler.require(:default, Rails.env)
 
 
-Bundler.require(:default, Rails.env)
 if File.exists?(File.expand_path('../application.yml', __FILE__))
   config = YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
   config.merge! config.fetch(Rails.env, {})
