@@ -17,10 +17,10 @@
             - @product.pictures.each_with_index do |p, index|
               -if index==0
                 .item.active
-                  %img.slide-image{src:"http://localhost:3000/#{p.image.url}"}
+                  %img.slide-image{src:"#{ENV['daigou_url']}/#{p.image.url}"}
               -else
                 .item
-                  %img.slide-image{src:"http://localhost:3000/#{p.image.url}"}
+                  %img.slide-image{src:"#{ENV['daigou_url']}/#{p.image.url}"}
           %a.left.carousel-control{href:"#carousel-example-generic", "data-slide"=>"prev"}
             %span.glyphicon.glyphicon-chevron-left
           %a.right.carousel-control{href:"#carousel-example-generic", "data-slide"=>"next"}
@@ -28,5 +28,7 @@
   .col-md-8
     %h2= @product.name
     %hr
+    %h4 人民币: #{@product.rmb_price}.00
+    %hr
     %h4 产品描述
-    %p= @product.desc
+    %p= @product.desc.html_safe
