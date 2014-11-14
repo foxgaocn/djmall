@@ -1,26 +1,15 @@
-.row.carousel-holder
-  .col-md-12
-    %div.carousel.slide{id:"carousel-example-generic", "data-ride" => "carousel"}
-      %ol.carousel-indicators
-        %li.active{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"0"}
-        %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"1"}
-        %li{"data-target"=>"#carousel-example-generic", "data-slide-to"=>"2"}
-      .carousel-inner
-        .item.active
-          %img.slide-image{src:'http://placehold.it/800x300'}
-        .item
-          %img.slide-image{src:'http://placehold.it/800x300'}
-        .item
-          %img.slide-image{src:'http://placehold.it/800x300'}
-      %a.left.carousel-control{href:"#carousel-example-generic", "data-slide"=>"prev"}
-        %span.glyphicon.glyphicon-chevron-left
-      %a.right.carousel-control{href:"#carousel-example-generic", "data-slide"=>"next"}
-        %span.glyphicon.glyphicon-chevron-right
+.ad
+  %hr.short
+  %hr
+  = image_tag('oz_logo.jpeg') 
+  澳洲制造 品质保证
+  %hr
+  %hr.short
 .row.text-center
   - @products.each do |p|
     .col-sm-3.col-lg-3.col-md-3
       .thumbnail
-        = image_tag "#{ENV['daigou_url']}/#{p.pictures[0].image.url}"
+        = image_tag "#{ENV['daigou_url']}/#{p.pictures[0].image.url(:thumb)}"
         .caption
           %h4 人民币: #{p.rmb_price}.00
           %a{href:"/#{@store.name}/products/#{p.id}"} #{p.name}

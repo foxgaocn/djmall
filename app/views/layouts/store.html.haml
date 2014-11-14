@@ -2,11 +2,12 @@
   .container  
     .row
       .col-md-3
-        %p.lead 商品类别
-        .list-group
-          %a.list-group-item{href: "/#{@store.name}"} 所有商品
-          - Category.all.each do |c|
-            %a.list-group-item{href: "/#{@store.name}?category_id=#{c.id}"} #{c.name}
+        .list-group.menu
+          .list-group-item.menu-title 商品类别
+          .list-group
+            %a.list-group-item{href: "/#{@store.name}"} 所有商品
+            - Category.all.each do |c|
+              %a.list-group-item{href: "/#{@store.name}?category_id=#{c.id}"} #{c.name}
       .col-md-9
         = yield
 = render template: "layouts/application"
