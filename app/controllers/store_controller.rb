@@ -12,13 +12,16 @@ class StoreController < ApplicationController
 
   private
   def find_store
-    puts
     @store = Store.find_by_name(params[:id])
   end
 
   def find_all_products
     category_id = params[:category_id]
-    @products = category_id.present? ? Product.where(category_id: category_id) : Product.all
+    if category_id.present?
+      @products = Product.where(category_id: category_id).paginate(:page => params[:page])
+    else
+      @products =  Product.paginate(:page => params[:page])
+    end
     @products.each { |p| p.rmb_price = (p.price * @store.exchange_rate * (100 + @store.price_factor)/10000).ceil}
   end
 

@@ -13,5 +13,6 @@
         .caption
           %h4 人民币: #{p.rmb_price}.00
           %a{href:"/#{@store.name}/products/#{p.id}"} #{p.name}
+  = will_paginate @products
 
 
